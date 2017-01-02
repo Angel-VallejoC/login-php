@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2016 a las 07:48:04
+-- Tiempo de generación: 02-01-2017 a las 02:32:17
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `usuario` varchar(100) NOT NULL,
-  `contraseña` varchar(100) NOT NULL
+  `contraseña` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `usuario`, `contraseña`) VALUES
-(1, 'angel', '123');
+(1, 'angel', '$2y$10$LRyLtin7FI1tB8JBL4HxGuEYWBS2tKth6ya19KkmyYVBp2FL78IHy');
 
 --
 -- Índices para tablas volcadas
@@ -47,7 +47,8 @@ INSERT INTO `login` (`id`, `usuario`, `contraseña`) VALUES
 -- Indices de la tabla `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
