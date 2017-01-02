@@ -15,5 +15,6 @@
  </head>
  <body>
  	<?php echo "Bienvenido " . $_SESSION["usuario"]["usuario"] ; ?>
+ 	<a href="logout.php">Cerrar sesión</a>
  </body>
  </html>
