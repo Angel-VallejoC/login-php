@@ -16,13 +16,12 @@
 			$contraseña = stripslashes($contraseña);
 			$contraseña = filter_var($contraseña, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES); 
 
-			$consulta = $DB->prepare("select * from login where usuario = :u and contraseña = :c ");
+			$consulta = $DB->prepare("select * from login where usuario = :u ");
 			$consulta->bindParam(":u", $usuario);
-			$consulta->bindParam(":c", $contraseña);
 			$consulta->execute();
 			$consulta = $consulta->Fetch(PDO::FETCH_ASSOC);
 
-			if ($consulta) {
+			if (  password_verify($contraseña, $consulta["contraseña"])  ) {
 				session_start();
 				$_SESSION["usuario"] = $consulta;
 				header("Location: zona-usuarios.php");
