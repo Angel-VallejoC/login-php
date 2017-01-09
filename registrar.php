@@ -45,8 +45,9 @@
 
 					if ($insertar->errorInfo()[2]) {
 						echo "El nombre de usuario ya existe.";
-					}
-					header("Location: index.php");
+					} else {
+						header("Location: index.php");
+					}					
 
 		  		} catch (Exception $e) {
 		  			echo $e->getMessage();
