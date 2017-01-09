@@ -43,8 +43,10 @@
 					$insertar->bindParam(":c", $contraseña);
 					$insertar->execute();
 
-					echo "<script> alert('Tu cuenta ha sido creada');   </script>";
-					//header("Location: index.php");
+					if ($insertar->errorInfo()[2]) {
+						echo "El nombre de usuario ya existe.";
+					}
+					header("Location: index.php");
 
 		  		} catch (Exception $e) {
 		  			echo $e->getMessage();
